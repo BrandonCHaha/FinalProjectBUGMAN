@@ -233,6 +233,7 @@ function CreateBattleUI(floor){
         enemyContainer.appendChild(enemyImg)
         numCollumn.appendChild(enemyHealth)
         numCollumn.appendChild(damageWarning)
+        padding.appendChild(endTurnBtn);
         row2.appendChild(padding)
         row2.appendChild(numCollumn)
         row2.appendChild(enemyContainer)
@@ -241,7 +242,6 @@ function CreateBattleUI(floor){
         deckContainer.appendChild(playerHealth);
         deckContainer.appendChild(cardPlaysLeft);
         deckContainer.appendChild(playerGuard);
-        deckContainer.appendChild(endTurnBtn);
         handAndInfoContainer.appendChild(deckContainer);
         handAndInfoContainer.appendChild(playerHand)
         row3.appendChild(handAndInfoContainer);
