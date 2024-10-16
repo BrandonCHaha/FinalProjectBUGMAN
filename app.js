@@ -57,7 +57,7 @@ async function fight1() {
             Entities.bugling.health -= poisonDamage;
             enemyHealthHTML.innerHTML = `<img src='assetsPH/bHeart.png' class='coolIcon' alt='HP'>: ${Entities.bugling.health}`;
 
-            enemyWarning.style.fontSize = '30px';
+            enemyWarning.style.fontSize = '25px';
 
             enemyWarning.innerHTML = `Bugman takes ${poisonDamage} poison damage!`;
             await new Promise(resolve => setTimeout(resolve, 1000));
@@ -72,7 +72,7 @@ async function fight1() {
         cardPlayHTML.innerHTML = `<img src='assetsPH/energy.png' class='coolIcon' alt='HP'>: ${Entities.player.cardPlay}`;
 
         if (Entities.bugling.health > 0) {
-            enemyWarning.style.fontSize = '30px';
+            enemyWarning.style.fontSize = '25px';
             enemyWarning.innerHTML = `Bugman attacks for ${Entities.bugling.damage} damage!`;
 
             await new Promise(resolve => setTimeout(resolve, 1000));
