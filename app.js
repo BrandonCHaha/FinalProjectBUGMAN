@@ -57,7 +57,7 @@ async function fight1() {
             Entities.bugling.health -= poisonDamage;
             enemyHealthHTML.innerHTML = `<img src='assetsPH/bHeart.png' class='coolIcon' alt='HP'>: ${Entities.bugling.health}`;
 
-            enemyWarning.style.fontSize = '25px';
+            enemyWarning.style.fontSize = '30px';
 
             enemyWarning.innerHTML = `Bugman takes ${poisonDamage} poison damage!`;
             await new Promise(resolve => setTimeout(resolve, 1000));
@@ -72,16 +72,17 @@ async function fight1() {
         cardPlayHTML.innerHTML = `<img src='assetsPH/energy.png' class='coolIcon' alt='HP'>: ${Entities.player.cardPlay}`;
 
         if (Entities.bugling.health > 0) {
-            enemyWarning.style.fontSize = '25px';
+            enemyWarning.style.fontSize = '30px';
             enemyWarning.innerHTML = `Bugman attacks for ${Entities.bugling.damage} damage!`;
 
             await new Promise(resolve => setTimeout(resolve, 1000));
 
             enemyWarning.style.fontSize = '60px';
-            enemyWarning.innerHTML = `<img src='assetsPH/attack.png' class='coolIcon' alt='Attack'>: ` + (Entities.bugling.damage + 1);
+            enemyWarning.innerHTML = `<img src='assetsPH/attack.png' class='coolIcon' alt='Attack'>: ` + (Entities.bugling.damage);
 
             const damageToTake = Math.max(Entities.bugling.damage - Entities.player.guard, 0);
             playerHealthHTML.innerHTML = `<img src='assetsPH/pHeart.png' class='coolIcon' alt='HP'>` + ": " + (Entities.player.health - damageToTake);
+            Entities.player.health -= damageToTake;
         }
 
         Entities.player.guard = 0;
@@ -103,6 +104,7 @@ async function fight1() {
 
         Entities.player.turn++;
         playerTurn.innerHTML = `T U R N: ${Entities.player.turn}`
+        console.log(Entities.bugling.damage + " " + Entities.player.health)
 
     }
 
@@ -233,7 +235,6 @@ function CreateBattleUI(floor){
         enemyContainer.appendChild(enemyImg)
         numCollumn.appendChild(enemyHealth)
         numCollumn.appendChild(damageWarning)
-        padding.appendChild(endTurnBtn);
         row2.appendChild(padding)
         row2.appendChild(numCollumn)
         row2.appendChild(enemyContainer)
@@ -242,6 +243,7 @@ function CreateBattleUI(floor){
         deckContainer.appendChild(playerHealth);
         deckContainer.appendChild(cardPlaysLeft);
         deckContainer.appendChild(playerGuard);
+        deckContainer.appendChild(endTurnBtn);
         handAndInfoContainer.appendChild(deckContainer);
         handAndInfoContainer.appendChild(playerHand)
         row3.appendChild(handAndInfoContainer);
@@ -417,10 +419,10 @@ function MoveToHand(i){
 function showDeathScreen() {
 
     const deathScreen = document.createElement('div');
-    deathScreen.classList.add('youDiedScreen');
+    deathScreen.setAttribute("class", "fadeToBlack")
     
     const deathText = document.createElement('h1');
-    deathText.innerText = "You Died...";
+    deathText.textContent = "You Died...";
     deathScreen.appendChild(deathText);
     
 
