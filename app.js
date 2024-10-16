@@ -104,7 +104,6 @@ async function fight1() {
 
         Entities.player.turn++;
         playerTurn.innerHTML = `T U R N: ${Entities.player.turn}`
-        console.log(Entities.bugling.damage + " " + Entities.player.health)
 
     }
 
@@ -419,7 +418,7 @@ function MoveToHand(i){
 function showDeathScreen() {
 
     const deathScreen = document.createElement('div');
-    deathScreen.setAttribute("class", "fadeToBlack")
+    deathScreen.classList.add('youDiedScreen');
     
     const deathText = document.createElement('h1');
     deathText.textContent = "You Died...";
